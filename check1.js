@@ -1,5 +1,5 @@
 async function getCsrfToken() {
-    const response = await fetch('https://usnavneel.freshdesk.com/support/login
+    const response = await fetch('https://usnavneel.freshdesk.com/support/login')
     const text = await response.text();
     const parser = new DOMParser();
     const doc = parser.parseFromString(text, 'text/html');
