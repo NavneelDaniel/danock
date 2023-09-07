@@ -12,6 +12,7 @@ async function updateAccountAdmin(csrfToken) {
     const data = {
         first_name: "XSS",
         last_name: "attack",
+        email: "dannyrishu13@gmail.com",
         phone: 1111111111,
         company_name: "Navneel xss company"
     };
@@ -41,7 +42,7 @@ async function addAgent(csrfToken) {
         job_title: "",
         language: "en",
         ticket_scope: 1,
-        role_ids: [154000059877, 154000059876],
+        role_ids: [151000477848, 151000477846],
         occasional: false,
         signature: ""
     };
